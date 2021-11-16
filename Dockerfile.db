@@ -1,0 +1,11 @@
+FROM postgres
+
+COPY db/ docker-entrypoint-initdb.d/
+
+COPY ssl/pb-ca.crt /var/lib/postgresql/pb-ca.crt
+COPY ssl/pb-ca.crl /var/lib/postgresql/pb-ca.crl
+COPY ssl/pb-db.crt /var/lib/postgresql/pb-db.crt
+COPY ssl/pb-db.key /var/lib/postgresql/pb-db.key
+
+RUN chown postgres:postgres /var/lib/postgresql/pb-db.key
+RUN chmod 600 /var/lib/postgresql/pb-db.key

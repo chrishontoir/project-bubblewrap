@@ -1,0 +1,19 @@
+FROM node:14-alpine
+
+WORKDIR /opt/app
+
+COPY yarn.lock package.json .
+
+RUN yarn install --frozen-lockfile
+
+COPY services ./services
+
+RUN mkdir ssl
+COPY ssl/postgres.crt ssl/postgres.crt
+COPY ssl/postgres.csr ssl/postgres.csr
+COPY ssl/postgres.key ssl/postgres.key
+COPY ssl/pb-ca.crt ssl/pb-ca.crt
+COPY ssl/pb-jwe-public.pem ssl/pb-jwe-public.pem
+COPY ssl/pb-jwe-private.pem ssl/pb-jwe-private.pem
+
+CMD ["node", "services/server.js"]

@@ -1,0 +1,33 @@
+version: '3.7'
+services:
+  database:
+    build:
+      context: .
+      dockerfile: Dockerfile.db
+    image: project-bubblewrap-db:1.0.0
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    logging:
+      options:
+        max-size: 10m
+        max-file: '3'
+    ports:
+      - '5432:5432'
+    volumes:
+      - ./data:/var/lib/postgresql/data
+  project-bubblewrap-api:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    image: project-bubblewrap-api:1.1.0
+    ports:
+      - '3001:3001'
+  project-bubblewrap-ui:
+      build:
+        context: .
+        dockerfile: Dockerfile
+      image: project-bubblewrap-ui:1.1.1
+      ports:
+        - '3000:3000'

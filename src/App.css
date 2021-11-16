@@ -1,38 +1,35 @@
+:root {
+  --headerHeight: 60px;
+  --footerHeight: 100px;
+
+  --primaryBackgroundColor: #49706f;
+  --primaryFontColor: #444;
+  --primaryHoverColor: #355150;
+
+  --secondaryBackgroundColor: #ee9631;
+  --secondaryFontColor: white;
+  --secondaryHoverColor: #da7d12;
+
+  --disabledBackgroundColor: rgba(80,80,80,0.5);
+  --disabledHoverColor: rgba(80,80,80,0.5);
+  
+  --errorBackgroundColor: rgba(246,54,50);
+  --errorFontColor: #f63632;
+  --errorHoverColor: #ca0d09;
+}
+
 .App {
   text-align: center;
+  font-family: 'Prompt', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: var(--primaryFontColor);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+button {
+  font-family: 'Prompt', sans-serif;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+input {
+  font-family: 'Prompt', sans-serif;
 }
